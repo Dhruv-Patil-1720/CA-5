@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import "./Input.css";
-import { FaSearch } from "react-icons/fa";
 
 const Input = ({ books, onSearch }) => {
     const [text, setText] = useState('');
@@ -9,33 +7,33 @@ const Input = ({ books, onSearch }) => {
     function handleChange(e) {
         const inputValue = e.target.value;
         setText(inputValue);
-        // Filter books based on input value
+        // Filtering the books based on input value
         const filteredBooks = books.filter(book =>
             book.title.toLowerCase().includes(inputValue.toLowerCase())
         );
-        // Call the onSearch callback with filtered books
+        // Calling the onSearch callback with filtered books
         onSearch(filteredBooks);
     }
 
-    // Render the component
     return (
         <div>
-            <form onSubmit={(e) => e.preventDefault()}>
-            <FaSearch style={{position:"absolute",top:"160px",right:"460px"}}/>
+            <form onSubmit={(e) => e.preventDefault()} style={{ position: "relative" }}>
                 <input
-                
                     type='text'
                     placeholder='Search for title, author, ISBN, publisher....'
                     autoComplete='off'
                     className='input'
                     style={{
-                        width: "500px",
-                        height: "30px",
-                        marginLeft: "400px"
+                    width: "450px",
+                    height: "40px",
+                    marginLeft: "430px",
+                    marginTop:"50px"
                     }}
                     value={text}
                     onChange={handleChange}
                 />
+               <button className='search' style={{width:"100px",position:"absolute",left:"60%",top:"51px",
+  cursor:"pointer",textAlign:"center"}}>Seacrch</button>
             </form>
         </div>
     );

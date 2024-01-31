@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '/src/Components/Navbar.jsx';
 import Input from '/src/Components/Input.jsx';
 import BookList from './BooksList';
+import Navbar from './Navbar';
 
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
         .then((data) => {
             console.log('Fetched Data:', data);
             setBooks(data.books); // Set books directly from data.books
-            setFilteredBooks(data.books); // Initialize filteredBooks with all books
+            setFilteredBooks(data.books); // Initializing filteredBooks with all books
         })
         .catch((error) => {
             console.error('Fetch Error:', error);
@@ -40,18 +40,33 @@ const Home = () => {
     return (
         <>
             <div>
-                <Navbar />
                 <div className='header'>
-                    <div className='box'>
-                        
-                        <q className='quote'>
+                <Navbar />
+                    <div className='box' style={{
+                       
+                        padding: '20px',
+                        borderRadius: '10px'
+                    }}>
+                        <q style={{
+                            color: 'black',
+                            fontFamily: 'Special Elite, cursive',
+                            marginLeft:"50px",
+                            fontWeight: "800",
+                            fontSize:"35px",
+                            lineHeight: 1.4,
+                            textAlign: 'center',
+                            padding: '.5rem',
+                            backdropFilter: 'blur(10px)',
+                            backgroundColor: 'rgba(255, 255, 255, 0.5)', 
+                        }}>
                             “A reader lives a thousand lives before he dies . . . The man who never reads lives only one.”
                         </q>
-                        {/* Pass the books and onSearch props to Input */}
+                        {/* Passing the books and onSearch props to Input */}
                         <Input books={books} onSearch={handleSearch} />
                         {error && <div>Error: {error}</div>}
+                       
                         <div className='Books'>
-                            {/* Pass the filteredBooks to BookList */}
+                            {/* Passing the filteredBooks to BookList */}
                             <BookList books={filteredBooks} />
                         </div>
                     </div>

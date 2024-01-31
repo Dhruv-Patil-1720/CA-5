@@ -1,20 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './Components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Components/Home';
 import Form from './Components/Form';
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/register" component={Form} />
-        
-        </Switch>
-      </div>
-    </Router>
+    <div className='bg-image' >
+  {/* routing the necessay elements */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Form />} />
+      </Routes>
+    </div>
   );
 };
 
